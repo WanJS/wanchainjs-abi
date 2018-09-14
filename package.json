@@ -1,15 +1,15 @@
 {
-  "name": "ethereumjs-abi",
-  "version": "0.6.5",
+  "name": "wanchainjs-abi",
+  "version": "0.6.7",
   "description": "Decoder and encoder for the Ethereum ABI",
   "main": "index.js",
   "dependencies": {
     "bn.js": "^4.10.0",
-    "ethereumjs-util": "^5.0.0"
+    "wanchainjs-util": "^5.0.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.4",
-    "istanbul": "^0.4.1",
+    "nyc": "^13.0.1",
     "mocha": "^2.1.0",
     "standard": "^5.4.1"
   },
@@ -18,22 +18,24 @@
     "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
     "lint": "standard",
     "prepublish": "npm run lint && npm run test",
-    "test": "istanbul test _mocha -- --reporter spec"
+    "test:unit": "mocha --reporter spec",
+    "test:coverage": "nyc npm run test:unit && npm run test:coveralls-upload",
+    "test:coveralls-upload": "if [ $COVERALLS_REPO_TOKEN ]; then nyc report --reporter=text-lcov | coveralls; fi"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axic/ethereumjs-abi.git"
+    "url": "git+https://github.com/axic/wanchainjs-abi.git"
   },
   "keywords": [
-    "ethereum",
+    "wanchain",
     "ABI"
   ],
-  "author": "Alex Beregszaszi <alex@rtfs.hu>",
+  "author": "Tyrion70 <tyrion70@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/axic/ethereumjs-abi/issues"
+    "url": "https://github.com/axic/wanchainjs-abi/issues"
   },
-  "homepage": "https://github.com/axic/ethereumjs-abi",
+  "homepage": "https://github.com/axic/wanchainjs-abi",
   "standard": {
     "globals": [
       "describe",
